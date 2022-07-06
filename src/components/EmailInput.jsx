@@ -1,10 +1,12 @@
-import React,{useState,useEffect} from "react";
+import React,{useState,useEffect,useContext} from "react";
+import { appContext } from "../App";
 
-const EmailInput = (props) => {
+const EmailInput = () => {
+    const user = useContext(appContext);
 
     const [email, setEmail] = useState();
 
-    useEffect(() => setEmail(props.email), [props]);
+    useEffect(() => setEmail(user.email), [user]);
   return (
     <>
       <div className="w-50 m-auto mt-5">
@@ -14,7 +16,7 @@ const EmailInput = (props) => {
         <input
           type="email"
           value={email}
-          onChange={(e)=>{props.setEmail(e.target.value)}}
+          onChange={(e)=>{user.setEmail(e.target.value)}}
           className="form-control"
           placeholder="name@example.com"
         />

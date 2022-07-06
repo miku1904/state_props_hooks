@@ -1,9 +1,12 @@
-import React,{useState,useEffect} from "react";
+import React,{useState,useEffect,useContext} from "react";
+import { appContext } from "../App";
 
-const NameInput = (props) => {
+const NameInput = () => {
+    const user = useContext(appContext);
+  
     const [name, setName] = useState();
 
-    useEffect(() => setName(props.name), [props]);
+    useEffect(() => setName(user.name), [user]);
 
 
     
@@ -17,7 +20,7 @@ const NameInput = (props) => {
         value={name}
           type="Name"
           name="name"
-          onChange={(e)=>{props.setName(e.target.value)}}
+          onChange={(e)=>{user.setName(e.target.value)}}
           className="form-control"
           placeholder="Enter Name Here"
         />

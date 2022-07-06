@@ -1,9 +1,13 @@
-import React,{useState,useEffect} from "react";
+import React,{useState,useEffect,useContext} from "react";
+import { appContext } from "../App";
 
-const MobileNoInput = (props) => {
+const MobileNoInput = () => {
+  const user = useContext(appContext)
+
   const [mobileNO, setMobileNo] = useState();
 
-    useEffect(() => setMobileNo(props.mobileNo), [props]);
+
+    useEffect(() => setMobileNo(user.mobileNo), [user]);
 
 
   return (
@@ -16,7 +20,7 @@ const MobileNoInput = (props) => {
           value={mobileNO}
           type="Mobile"
           name="Mobile"
-          onChange={(e)=>{props.setMobileNo(e.target.value)}}
+          onChange={(e)=>{user.setMobileNo(e.target.value)}}
           className="form-control"
           placeholder="Enter Phone no here"
         />
